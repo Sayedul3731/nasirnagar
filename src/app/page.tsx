@@ -121,7 +121,7 @@ export default function Home() {
               </Button>
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 font-bold px-8 py-6 rounded-lg shadow-lg transition duration-300 text-lg"
+                className="border-white hover:text-white hover:bg-white/10 font-bold px-8 py-6 rounded-lg shadow-lg transition duration-300 text-lg"
               >
                 View Gallery
               </Button>
