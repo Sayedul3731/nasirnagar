@@ -22,6 +22,21 @@ export default function Navbar() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Shared navigation items for both desktop and mobile
+  const navItems = [
+    { name: "Home", link: "/" },
+    { name: "Government Offices", link: "/government-offices" },
+    { name: "Hospitals", link: "/hospitals" },
+    { name: "Doctors", link: "/doctors" },
+    { name: "Educational Institutes", link: "/educational-institutes" },
+    { name: "Tourist Spots", link: "/tourist-spots" },
+    { name: "Teams", link: "/teams" },
+    { name: "Players", link: "/players" },
+    { name: "Hotels", link: "/hotels" },
+    { name: "Shops", link: "/shops" },
+    { name: "Contact Us", link: "/contact" },
+  ];
+
   return (
     <nav
       className={cn(
@@ -41,13 +56,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-1">
-          {[
-            { name: "Home", link: "/" },
-            { name: "Traveling places", link: "/traveling-places" },
-            { name: "Key Attractions", link: "/attractions" },
-            { name: "Photo Gallery", link: "/gallery" },
-            { name: "Contact Us", link: "/contact" },
-          ].map((item) => (
+          {navItems.map((item) => (
             <Button
               key={item.name}
               variant={
@@ -88,39 +97,25 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-gray-900/95 backdrop-blur-md"
+          className="md:hidden bg-gray-900/95 backdrop-blur-md max-h-[80vh] overflow-y-auto"
         >
           <div className="flex flex-col py-4 px-4 space-y-2">
-            {[
-              "Home Page",
-              "About Us",
-              "Key Attractions",
-              "Photo Gallery",
-              "Contact Us",
-            ].map((item, index) => (
+            {navItems.map((item) => (
               <Button
-                key={item}
+                key={item.name}
                 variant={
-                  activeSection === item.toLowerCase().replace(/\s+/g, "")
+                  activeSection === item.link.replace("/", "")
                     ? "default"
                     : "ghost"
                 }
                 className={cn(
                   "justify-start text-white hover:text-yellow-200 transition duration-300",
-                  activeSection === item.toLowerCase().replace(/\s+/g, "") &&
+                  activeSection === item.link.replace("/", "") &&
                     "bg-yellow-600 hover:bg-yellow-700 text-white"
                 )}
-                onClick={() =>
-                  (window.location.href = [
-                    "/",
-                    "/about",
-                    "/attractions",
-                    "/gallery",
-                    "/contact",
-                  ][index])
-                }
+                onClick={() => (window.location.href = item.link)}
               >
-                {item}
+                {item.name}
               </Button>
             ))}
           </div>

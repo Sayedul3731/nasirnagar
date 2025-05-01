@@ -179,7 +179,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true, margin: "-100px" }}
               >
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                <h3 className="text-2xl font-bold text-black mb-4">
                   A Rich Heritage
                 </h3>
                 <p className="text-gray-700 mb-4 leading-relaxed">
