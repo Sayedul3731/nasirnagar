@@ -232,9 +232,9 @@ export default function Home() {
             >
               {[
                 { number: "50+", label: "Historic Sites" },
-                { number: "100K+", label: "Population" },
-                { number: "25+", label: "Schools" },
-                { number: "200+", label: "Years History" }
+                { number: "300K+", label: "Population" },
+                { number: "27+", label: "Schools" },
+                { number: "250+", label: "Years History" }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">
