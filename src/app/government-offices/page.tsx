@@ -588,7 +588,7 @@ function ServiceCard({
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
-  const [iconBg, borderColor, textColor, cardBg] = getColorClasses(color).split(' ');
+  const [iconBg, textColor, cardBg] = getColorClasses(color).split(' ');
 
   return (
     <Card className={`h-full group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-0 shadow-lg ${cardBg}`}>
