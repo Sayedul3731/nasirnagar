@@ -21,10 +21,6 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Import the image (we'll keep using the existing rajbari image)
-// Note: In a real project, you'd need to ensure this image exists in your assets folder
-// Remove this line:
-// import rajbariImg from "@/assets/images/rajbari.jpg"
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
