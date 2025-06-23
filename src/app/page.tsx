@@ -13,10 +13,9 @@ import { motion } from "framer-motion";
 import {
   Calendar,
   Camera,
-  ChevronDown,
   MapPin,
   // Menu,
-  Users,
+  Users
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -24,6 +23,20 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  // Generate consistent particle positions
+  const particlePositions = Array.from({ length: 20 }, (_, i) => ({
+    left: ((i * 37) % 100), // Deterministic positioning based on index
+    top: ((i * 73) % 100),
+    delay: (i * 0.2) % 2,
+    duration: 3 + (i % 3)
+  }));
+
+  // Handle mount state for client-side only features
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle scroll events
   useEffect(() => {
@@ -74,65 +87,188 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
-      {/* Navbar - now with scroll effect and mobile menu */}
-
-      {/* Hero Section */}
+      {/* Navbar - now with scroll effect and mobile menu */}      {/* Hero Section */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center relative"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
       >
-        {/* Background Image with Parallax Effect */}
+        {/* Background Image with Enhanced Parallax Effect */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center scale-110"
           style={{
-            backgroundImage: `url('/placeholder.svg?height=1080&width=1920')`,
-            filter: "blur(4px)",
-            transform: `translateY(${scrollY * 0.2}px)`,
+            backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%), url('/placeholder.svg?height=1080&width=1920')`,
+            filter: "blur(2px) brightness(0.8)",
+            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
           }}
-        ></div>
+        ></div>        {/* Animated Background Particles */}
+        {mounted && (
+          <div className="absolute inset-0">
+            {particlePositions.map((particle, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-yellow-400/20 rounded-full"
+                style={{
+                  left: `${particle.left}%`,
+                  top: `${particle.top}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: particle.duration,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: particle.delay,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80"></div>
+        {/* Enhanced Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-purple-900/30 to-amber-900/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50"></div>
 
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
-              <span className="block">Welcome to</span>
-              <span className="text-yellow-400 block mt-2">Nasirnagar</span>
-            </h1>
-            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-              Discover the hidden gem of Brahmanbaria, Bangladesh. A riverine
-              upazila known for its natural beauty, historical sites,
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="inline-flex items-center px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 rounded-full text-yellow-300 text-sm font-medium mb-8 backdrop-blur-sm"
+            >
+              <MapPin className="w-4 h-4 mr-2" />
+              Brahmanbaria, Bangladesh
+            </motion.div>
+
+            {/* Main Title with Enhanced Animation */}
+            <motion.h1 
+              className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-8 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.5 }}
+            >
+              <motion.span 
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+              >
+                Welcome to
+              </motion.span>
+              <motion.span 
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 mt-2 relative"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+              >
+                Nasirnagar
+                {/* Glow effect */}
+                <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 blur-sm opacity-50">
+                  Nasirnagar
+                </span>
+              </motion.span>
+            </motion.h1>
+
+            {/* Enhanced Description */}
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-100 mb-12 leading-relaxed max-w-3xl mx-auto font-light"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+            >
+              Discover the hidden gem of{" "}
+              <span className="text-yellow-300 font-medium">Brahmanbaria</span>, Bangladesh. 
+              A riverine upazila known for its natural beauty, historical sites,
               educational institutions, and notable personalities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-6 rounded-lg shadow-lg transition duration-300 text-lg">
-                Explore
+            </motion.p>
+
+            {/* Enhanced Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+            >
+              <Button className="group bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-black font-bold px-10 py-7 rounded-2xl shadow-2xl transition-all duration-300 text-lg transform hover:scale-105 hover:shadow-yellow-500/25 relative overflow-hidden">
+                <span className="relative z-10 flex items-center">
+                  Explore Now
+                  <motion.div
+                    className="ml-2"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+                  >
+                    →
+                  </motion.div>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
+              
               <Button
                 variant="outline"
-                className="border-white hover:text-white hover:bg-white/10 font-bold px-8 py-6 rounded-lg shadow-lg transition duration-300 text-lg"
+                className="group border-2 border-white/30 hover:border-white text-white hover:bg-white/10 font-bold px-10 py-7 rounded-2xl shadow-2xl transition-all duration-300 text-lg backdrop-blur-sm transform hover:scale-105 relative overflow-hidden coursor-pointer"
               >
-                View Gallery
+                <span className="relative z-10 flex items-center text-black">
+                  <Camera className="w-5 h-5 mr-2" />
+                  View Gallery
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
-            </div>
+            </motion.div>
+
+            {/* Stats or Features */}
+            <motion.div
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+            >
+              {[
+                { number: "50+", label: "Historic Sites" },
+                { number: "100K+", label: "Population" },
+                { number: "25+", label: "Schools" },
+                { number: "200+", label: "Years History" }
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
 
-        {/* Scroll Down Indicator */}
+        {/* Enhanced Scroll Down Indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 flex flex-col items-center"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
         >
-          <ChevronDown className="h-8 w-8" />
+          <span className="text-sm font-medium mb-2 opacity-75">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <motion.div
+              className="w-1 h-3 bg-yellow-400 rounded-full mt-2"
+              animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
+            />
+          </div>
         </motion.div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 border border-yellow-400/20 rounded-full hidden md:block"></div>
+        <div className="absolute bottom-32 right-16 w-16 h-16 border border-white/10 rounded-full hidden md:block"></div>
+        <div className="absolute top-1/3 right-8 w-4 h-4 bg-yellow-400/30 rounded-full hidden lg:block"></div>
       </section>
 
       {/* About Section */}
