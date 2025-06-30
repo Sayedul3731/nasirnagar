@@ -18,101 +18,191 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, MapPin, Medal, Search, Star, Trophy } from "lucide-react";
+import { Award, Calendar, Eye, Filter, Heart, MapPin, Medal, Search, Star, TrendingUp, Trophy, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function PlayersPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gray-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-4">Notable Players</h1>
-            <p className="text-xl text-gray-300 mb-6">
+      {/* Hero Section with Enhanced Visual Design */}
+      <section className="relative py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-400/20 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400/10 rounded-full blur-2xl"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+              <Trophy className="h-5 w-5 text-yellow-400" />
+              <span className="text-sm font-medium">Celebrating Athletic Excellence</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Notable Players
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
               Discover the talented athletes who represent Nasirnagar in various
-              sports.
+              sports and inspire the next generation of champions.
             </p>
-            <div className="flex flex-wrap gap-4">
+            
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div className="text-2xl font-bold text-yellow-400">50+</div>
+                <div className="text-sm text-gray-300">Active Players</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div className="text-2xl font-bold text-blue-400">25+</div>
+                <div className="text-sm text-gray-300">Championships</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div className="text-2xl font-bold text-green-400">10+</div>
+                <div className="text-sm text-gray-300">Sports</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div className="text-2xl font-bold text-purple-400">100+</div>
+                <div className="text-sm text-gray-300">Achievements</div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4">
               <Button
                 asChild
-                variant="default"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black"
+                size="lg"
+                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <a href="#players">View Players</a>
+                <a href="#players">Explore Players</a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="text-black border-white hover:bg-white/10"
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm font-semibold transition-all duration-300"
               >
-                <a href="#achievements">Player Achievements</a>
+                <a href="#achievements">View Achievements</a>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Search Section */}
-      <section className="py-8 bg-white shadow-md">
+      {/* Enhanced Search Section */}
+      <section className="py-8 bg-white shadow-lg border-b">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <Label htmlFor="search" className="sr-only">
-                  Search
-                </Label>
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <Input
-                    id="search"
-                    placeholder="Search by player name"
-                    className="pl-10"
-                  />
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-gray-50 rounded-2xl p-6 shadow-inner">
+              <div className="flex flex-col lg:flex-row gap-4 items-end">
+                <div className="flex-1">
+                  <Label htmlFor="search" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Search Players
+                  </Label>
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <Input
+                      id="search"
+                      placeholder="Search by player name, team, or achievements..."
+                      className="pl-12 h-12 bg-white border-gray-200 focus:border-yellow-500 focus:ring-yellow-500/20 rounded-xl shadow-sm"
+                    />
+                  </div>
                 </div>
+                <div className="w-full lg:w-64">
+                  <Label htmlFor="sport" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Filter by Sport
+                  </Label>
+                  <Select>
+                    <SelectTrigger id="sport" className="h-12 bg-white border-gray-200 rounded-xl shadow-sm">
+                      <SelectValue placeholder="All Sports" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Sports</SelectItem>
+                      <SelectItem value="football">⚽ Football</SelectItem>
+                      <SelectItem value="cricket">🏏 Cricket</SelectItem>
+                      <SelectItem value="volleyball">🏐 Volleyball</SelectItem>
+                      <SelectItem value="badminton">🏸 Badminton</SelectItem>
+                      <SelectItem value="other">🏆 Other Sports</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="w-full lg:w-64">
+                  <Label htmlFor="achievement" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Achievement Level
+                  </Label>
+                  <Select>
+                    <SelectTrigger id="achievement" className="h-12 bg-white border-gray-200 rounded-xl shadow-sm">
+                      <SelectValue placeholder="All Levels" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Levels</SelectItem>
+                      <SelectItem value="national">🥇 National</SelectItem>
+                      <SelectItem value="regional">🥈 Regional</SelectItem>
+                      <SelectItem value="district">🥉 District</SelectItem>
+                      <SelectItem value="local">🏅 Local</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <Button className="h-12 px-8 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Filter className="h-4 w-4 mr-2" />
+                  Apply Filters
+                </Button>
               </div>
-              <div className="w-full md:w-48">
-                <Label htmlFor="sport" className="sr-only">
-                  Sport
-                </Label>
-                <Select>
-                  <SelectTrigger id="sport">
-                    <SelectValue placeholder="Sport" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Sports</SelectItem>
-                    <SelectItem value="football">Football</SelectItem>
-                    <SelectItem value="cricket">Cricket</SelectItem>
-                    <SelectItem value="volleyball">Volleyball</SelectItem>
-                    <SelectItem value="badminton">Badminton</SelectItem>
-                    <SelectItem value="other">Other Sports</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
-                Search
-              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-12 bg-gray-50" id="players">
+      {/* Enhanced Main Content */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white" id="players">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Featured Players
-          </h2>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-yellow-100 text-yellow-800 rounded-full px-4 py-2 mb-4">
+              <Users className="h-4 w-4" />
+              <span className="text-sm font-medium">Player Profiles</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Featured Players
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Meet the exceptional athletes who bring pride to Nasirnagar through their dedication and achievements
+            </p>
+          </div>
 
           <Tabs defaultValue="football" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
-              <TabsTrigger value="football">Football</TabsTrigger>
-              <TabsTrigger value="cricket">Cricket</TabsTrigger>
-              <TabsTrigger value="volleyball">Volleyball</TabsTrigger>
-              <TabsTrigger value="badminton">Badminton</TabsTrigger>
-              <TabsTrigger value="other">Other Sports</TabsTrigger>
-            </TabsList>
+            <div className="flex justify-center mb-8">
+              <TabsList className="grid grid-cols-2 md:grid-cols-5 bg-white shadow-lg rounded-xl p-1 border">
+                <TabsTrigger 
+                  value="football" 
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-black font-medium rounded-lg"
+                >
+                  ⚽ Football
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="cricket"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-black font-medium rounded-lg"
+                >
+                  🏏 Cricket
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="volleyball"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-black font-medium rounded-lg"
+                >
+                  🏐 Volleyball
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="badminton"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-black font-medium rounded-lg"
+                >
+                  🏸 Badminton
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="other"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500 data-[state=active]:to-yellow-600 data-[state=active]:text-black font-medium rounded-lg"
+                >
+                  🏆 Other
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="football" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -466,15 +556,24 @@ export default function PlayersPage() {
         </div>
       </section>
 
-      {/* Player Achievements */}
-      <section className="py-12 bg-white" id="achievements">
+      {/* Enhanced Player Achievements */}
+      <section className="py-16 bg-white" id="achievements">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Outstanding Achievements
-          </h2>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 rounded-full px-4 py-2 mb-4">
+              <Award className="h-4 w-4" />
+              <span className="text-sm font-medium">Hall of Fame</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Outstanding Achievements
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Celebrating milestone moments and exceptional performances that have put Nasirnagar on the sporting map
+            </p>
+          </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="space-y-8">`
               <AchievementCard
                 title="National Team Selection"
                 description="Karim Rahman was selected for the national football team camp, becoming the first player from Nasirnagar to achieve this honor."
@@ -515,14 +614,23 @@ export default function PlayersPage() {
         </div>
       </section>
 
-      {/* Training Programs */}
-      <section className="py-12 bg-gray-50">
+      {/* Enhanced Training Programs */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Player Development Programs
-          </h2>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 rounded-full px-4 py-2 mb-4">
+              <TrendingUp className="h-4 w-4" />
+              <span className="text-sm font-medium">Development Programs</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              Player Development Programs
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive training programs designed to nurture talent and develop the next generation of champions
+            </p>
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <ProgramCard
               title="Youth Talent Identification"
               description="Program to identify and nurture young sporting talent in Nasirnagar through regular trials and assessments."
@@ -580,25 +688,49 @@ export default function PlayersPage() {
         </div>
       </section>
 
-      {/* Become a Player */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Interested in Becoming a Player?
-          </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-            If you&#39;re interested in pursuing sports and becoming a player,
-            Nasirnagar offers various opportunities for training and
-            development. Contact our sports office to learn about trials,
-            training programs, and sports clubs in your area.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-yellow-500 hover:bg-yellow-600 text-black"
-          >
-            <Link href="/contact">Contact Sports Office</Link>
-          </Button>
+      {/* Enhanced Call to Action */}
+      <section className="py-16 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-black/10 rounded-full blur-xl"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-black/10 rounded-full px-4 py-2 mb-6">
+              <Heart className="h-5 w-5" />
+              <span className="text-sm font-medium">Join Our Community</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Become a Player?
+            </h2>
+            <p className="text-xl mb-8 leading-relaxed opacity-90">
+              Join Nasirnagar's thriving sports community! Whether you're a beginner or experienced athlete, 
+              we have programs and opportunities to help you reach your potential and represent our region with pride.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-black text-white hover:bg-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Link href="/contact">
+                  <Eye className="h-5 w-5 mr-2" />
+                  Contact Sports Office
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-black/30 text-black hover:bg-black/10 backdrop-blur-sm font-semibold transition-all duration-300"
+              >
+                <Link href="#programs">
+                  <Users className="h-5 w-5 mr-2" />
+                  Explore Programs
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -625,54 +757,66 @@ function PlayerCard({
   image,
 }: PlayerCardProps) {
   return (
-    <Card className="h-full">
-      <CardHeader className="text-center pb-0">
-        <div className="mx-auto relative w-32 h-32 rounded-full overflow-hidden mb-4">
+    <Card className="h-full group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white border-0 shadow-lg overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <CardHeader className="text-center pb-4 relative z-10">
+        <div className="mx-auto relative w-36 h-36 rounded-full overflow-hidden mb-4 ring-4 ring-yellow-400/20 group-hover:ring-yellow-400/40 transition-all duration-300">
           <Image
             src={image || "/placeholder.svg"}
             alt={name}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription className="flex flex-col items-center gap-1">
-          <Badge className="bg-yellow-500 text-black hover:bg-yellow-600">
+        <CardTitle className="text-xl font-bold group-hover:text-yellow-600 transition-colors duration-300">{name}</CardTitle>
+        <CardDescription className="flex flex-col items-center gap-2">
+          <Badge className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black hover:from-yellow-600 hover:to-yellow-700 font-medium shadow-md">
             {position}
           </Badge>
-          <span className="text-sm">
+          <span className="text-sm text-gray-600 font-medium">
             {age} Years • {team}
           </span>
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 pt-4">
-        <div>
-          <h4 className="font-medium text-sm text-gray-500 mb-1">
-            Achievements
+      <CardContent className="space-y-6 pt-0 px-6 relative z-10">
+        <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-4">
+          <h4 className="font-semibold text-sm text-gray-700 mb-3 flex items-center gap-2">
+            <Trophy className="h-4 w-4 text-yellow-500" />
+            Key Achievements
           </h4>
-          <ul className="list-disc pl-5 text-gray-700 space-y-1">
-            {achievements.map((achievement, index) => (
-              <li key={index}>{achievement}</li>
+          <ul className="space-y-2">
+            {achievements.slice(0, 3).map((achievement, index) => (
+              <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+                <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                <span className="leading-relaxed">{achievement}</span>
+              </li>
             ))}
           </ul>
         </div>
-        <div>
-          <h4 className="font-medium text-sm text-gray-500 mb-1">Stats</h4>
-          <div className="grid grid-cols-3 gap-2">
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4">
+          <h4 className="font-semibold text-sm text-gray-700 mb-3 flex items-center gap-2">
+            <Medal className="h-4 w-4 text-green-500" />
+            Performance Stats
+          </h4>
+          <div className="grid grid-cols-3 gap-3">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center bg-gray-50 rounded-md p-2"
+                className="text-center bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow duration-200"
               >
-                <div className="text-lg font-semibold">{stat.value}</div>
-                <div className="text-xs text-gray-500">{stat.label}</div>
+                <div className="text-lg font-bold text-gray-900">{stat.value}</div>
+                <div className="text-xs text-gray-500 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">View Profile</Button>
+      <CardFooter className="pt-2 px-6 pb-6 relative z-10">
+        <Button className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+          <Eye className="h-4 w-4 mr-2" />
+          View Full Profile
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -696,30 +840,56 @@ function AchievementCard({
   image,
 }: AchievementCardProps) {
   return (
-    <Card className="overflow-hidden">
-      <div className="flex flex-col md:flex-row">
-        <div className="relative h-48 md:h-auto md:w-1/3">
+    <Card className="overflow-hidden group hover:shadow-2xl transition-all duration-500 border-0 shadow-lg bg-white">
+      <div className="flex flex-col lg:flex-row">
+        <div className="relative h-64 lg:h-auto lg:w-2/5 overflow-hidden">
           <Image
             src={image || "/placeholder.svg"}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-110 transition-transform duration-700"
           />
-        </div>
-        <div className="p-6 md:w-2/3">
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
-          <p className="text-gray-600 mb-4">{description}</p>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <Star className="h-5 w-5 text-yellow-500 mr-2" />
-              <span className="text-gray-700">
-                {player} • {sport}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500"></div>
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="flex items-center gap-2 text-white">
+              <div className="bg-yellow-500 p-2 rounded-full">
+                <Trophy className="h-4 w-4 text-black" />
+              </div>
+              <span className="font-semibold text-sm bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                {year}
               </span>
             </div>
-            <div className="flex items-center">
-              <Trophy className="h-5 w-5 text-yellow-500 mr-2" />
-              <span className="text-gray-700">{year}</span>
+          </div>
+        </div>
+        <div className="p-8 lg:w-3/5 flex flex-col justify-center">
+          <div className="mb-4">
+            <div className="inline-flex items-center gap-2 bg-yellow-100 text-yellow-800 rounded-full px-3 py-1 mb-3">
+              <Award className="h-3 w-3" />
+              <span className="text-xs font-medium uppercase tracking-wide">{sport}</span>
             </div>
+            <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-yellow-600 transition-colors duration-300">
+              {title}
+            </h3>
+          </div>
+          <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                <Star className="h-5 w-5 text-black" />
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900">{player}</div>
+                <div className="text-sm text-gray-500">Featured Athlete</div>
+              </div>
+            </div>
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-black transition-all duration-300"
+            >
+              <Eye className="h-4 w-4 mr-1" />
+              Learn More
+            </Button>
           </div>
         </div>
       </div>
@@ -745,31 +915,65 @@ function ProgramCard({
   image,
 }: ProgramCardProps) {
   return (
-    <Card className="h-full overflow-hidden">
-      <div className="relative h-48 w-full">
+    <Card className="h-full overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-white border-0 shadow-lg">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-110 transition-transform duration-700"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+        <div className="absolute top-4 right-4">
+          <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full">
+            <TrendingUp className="h-4 w-4 text-yellow-600" />
+          </div>
+        </div>
+        <div className="absolute bottom-4 left-4 right-4">
+          <h3 className="text-xl font-bold text-white mb-1 group-hover:text-yellow-300 transition-colors duration-300">
+            {title}
+          </h3>
+        </div>
       </div>
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <div className="space-y-2">
-          <div className="flex items-center">
-            <Medal className="h-5 w-5 text-yellow-500 mr-2 shrink-0" />
-            <span className="text-gray-700">Eligibility: {eligibility}</span>
+      <CardContent className="p-6 flex-1 flex flex-col">
+        <p className="text-gray-600 mb-6 leading-relaxed flex-1">{description}</p>
+        <div className="space-y-4">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
+            <div className="flex items-start gap-3 mb-3">
+              <Medal className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-semibold text-gray-700 mb-1">Eligibility</div>
+                <div className="text-sm text-gray-600">{eligibility}</div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center">
-            <Calendar className="h-5 w-5 text-yellow-500 mr-2 shrink-0" />
-            <span className="text-gray-700">Schedule: {schedule}</span>
+          
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4">
+            <div className="flex items-start gap-3 mb-3">
+              <Calendar className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-semibold text-gray-700 mb-1">Schedule</div>
+                <div className="text-sm text-gray-600">{schedule}</div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center">
-            <MapPin className="h-5 w-5 text-yellow-500 mr-2 shrink-0" />
-            <span className="text-gray-700">Contact: {contact}</span>
+          
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4">
+            <div className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <div className="text-sm font-semibold text-gray-700 mb-1">Contact</div>
+                <div className="text-sm text-gray-600 font-mono">{contact}</div>
+              </div>
+            </div>
           </div>
+        </div>
+        
+        <div className="mt-6">
+          <Button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+            <Users className="h-4 w-4 mr-2" />
+            Join Program
+          </Button>
         </div>
       </CardContent>
     </Card>

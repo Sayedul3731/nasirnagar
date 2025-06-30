@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,76 +9,140 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import {
-  MapPin,
-  Clock,
+  ArrowRight,
+  Building,
   Calendar,
-  Star,
-  Compass,
   Camera,
-  Utensils,
   Car,
+  Church,
+  Clock,
+  Compass,
+  Eye,
+  Globe,
+  Heart,
+  MapPin,
+  Palette,
+  Share2,
+  Star,
+  TreePine,
+  Utensils,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function TouristSpotsPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[500px] flex items-center justify-center text-center text-white">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90 z-10"></div>
+      <section className="relative h-[80vh] flex items-center justify-center text-center text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-900/70 to-gray-900/90 z-10"></div>
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center scale-110 transition-transform duration-[20000ms] hover:scale-105"
           style={{
-            backgroundImage: "url('/placeholder.svg?height=500&width=1200')",
+            backgroundImage: "url('/placeholder.svg?height=600&width=1400')",
           }}
         ></div>
 
+        {/* Floating elements for visual enhancement */}
+        <div className="absolute inset-0 z-10">
+          <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-400/20 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-32 right-16 w-32 h-32 bg-blue-400/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-purple-400/20 rounded-full blur-xl animate-pulse delay-2000"></div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-20">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Discover <span className="text-yellow-500">Nasirnagar</span>
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
-            Explore the natural beauty, historical sites, and cultural heritage
-            of Nasirnagar.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-yellow-500 hover:bg-yellow-600 text-black"
-            >
-              <a href="#attractions">Explore Attractions</a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white/10"
-            >
-              <a href="#tours">Guided Tours</a>
-            </Button>
+          <div className="animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              Discover <span className="text-yellow-400 drop-shadow-lg">Nasirnagar</span>
+            </h1>
+            <p className="text-xl md:text-2xl max-w-4xl mx-auto mb-8 text-gray-200 leading-relaxed">
+              🌟 Explore the natural beauty, historical sites, and cultural heritage
+              of Nasirnagar - Where every corner tells a story 🌟
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-3 rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                <a href="#attractions" className="flex items-center gap-2">
+                  <Globe className="h-5 w-5" />
+                  Explore Attractions
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-white/50 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-3 rounded-full transform hover:scale-105 transition-all duration-300"
+              >
+                <a href="#tours" className="flex items-center gap-2">
+                  <Camera className="h-5 w-5" />
+                  Guided Tours
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-12 bg-gray-50" id="attractions">
+      <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50" id="attractions">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Tourist Attractions
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              ✨ Tourist Attractions ✨
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover the hidden gems and popular destinations that make Nasirnagar a magical place to visit
+            </p>
+          </div>
 
           <Tabs defaultValue="natural" className="w-full">
-            <TabsList className="grid w-full grid-cols-1 md:grid-cols-4">
-              <TabsTrigger value="natural">Natural Beauty</TabsTrigger>
-              <TabsTrigger value="historical">Historical Sites</TabsTrigger>
-              <TabsTrigger value="religious">Religious Places</TabsTrigger>
-              <TabsTrigger value="cultural">Cultural Attractions</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
+              <TabsTrigger 
+                value="natural" 
+                className="rounded-xl flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-500 data-[state=active]:text-white transition-all duration-300"
+              >
+                <TreePine className="h-4 w-4" />
+                Natural Beauty
+              </TabsTrigger>
+              <TabsTrigger 
+                value="historical" 
+                className="rounded-xl flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white transition-all duration-300"
+              >
+                <Building className="h-4 w-4" />
+                Historical Sites
+              </TabsTrigger>
+              <TabsTrigger 
+                value="religious" 
+                className="rounded-xl flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-indigo-500 data-[state=active]:text-white transition-all duration-300"
+              >
+                <Church className="h-4 w-4" />
+                Religious Places
+              </TabsTrigger>
+              <TabsTrigger 
+                value="cultural" 
+                className="rounded-xl flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-rose-500 data-[state=active]:text-white transition-all duration-300"
+              >
+                <Palette className="h-4 w-4" />
+                Cultural Attractions
+              </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="natural" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <TabsContent value="natural" className="mt-8">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <AttractionCard
                   name="Nasirnagar Lake"
                   description="A serene lake surrounded by lush greenery, perfect for boating and picnics."
@@ -88,6 +151,7 @@ export default function TouristSpotsPage() {
                   bestTime="October to March"
                   rating={4.5}
                   image="/placeholder.svg?height=300&width=400"
+                  category="natural"
                 />
 
                 <AttractionCard
@@ -98,6 +162,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.2}
                   image="/placeholder.svg?height=300&width=400"
+                  category="natural"
                 />
 
                 <AttractionCard
@@ -108,6 +173,7 @@ export default function TouristSpotsPage() {
                   bestTime="Winter and Spring"
                   rating={4.0}
                   image="/placeholder.svg?height=300&width=400"
+                  category="natural"
                 />
 
                 <AttractionCard
@@ -118,12 +184,13 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.3}
                   image="/placeholder.svg?height=300&width=400"
+                  category="natural"
                 />
               </div>
             </TabsContent>
 
-            <TabsContent value="historical" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <TabsContent value="historical" className="mt-8">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <AttractionCard
                   name="Nasirnagar Fort"
                   description="Ancient fort with historical significance, showcasing traditional architecture."
@@ -132,6 +199,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.7}
                   image="/placeholder.svg?height=300&width=400"
+                  category="historical"
                 />
 
                 <AttractionCard
@@ -142,6 +210,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.4}
                   image="/placeholder.svg?height=300&width=400"
+                  category="historical"
                 />
 
                 <AttractionCard
@@ -152,12 +221,13 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.1}
                   image="/placeholder.svg?height=300&width=400"
+                  category="historical"
                 />
               </div>
             </TabsContent>
 
-            <TabsContent value="religious" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <TabsContent value="religious" className="mt-8">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <AttractionCard
                   name="Central Mosque"
                   description="Beautiful mosque with intricate designs and religious significance."
@@ -166,6 +236,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.6}
                   image="/placeholder.svg?height=300&width=400"
+                  category="religious"
                 />
 
                 <AttractionCard
@@ -176,6 +247,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.5}
                   image="/placeholder.svg?height=300&width=400"
+                  category="religious"
                 />
 
                 <AttractionCard
@@ -186,12 +258,13 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.3}
                   image="/placeholder.svg?height=300&width=400"
+                  category="religious"
                 />
               </div>
             </TabsContent>
 
-            <TabsContent value="cultural" className="mt-6">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <TabsContent value="cultural" className="mt-8">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <AttractionCard
                   name="Cultural Center"
                   description="Venue for cultural performances, exhibitions, and events showcasing local traditions."
@@ -200,6 +273,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round (Check for special events)"
                   rating={4.4}
                   image="/placeholder.svg?height=300&width=400"
+                  category="cultural"
                 />
 
                 <AttractionCard
@@ -210,6 +284,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.5}
                   image="/placeholder.svg?height=300&width=400"
+                  category="cultural"
                 />
 
                 <AttractionCard
@@ -220,6 +295,7 @@ export default function TouristSpotsPage() {
                   bestTime="Year-round"
                   rating={4.2}
                   image="/placeholder.svg?height=300&width=400"
+                  category="cultural"
                 />
               </div>
             </TabsContent>
@@ -228,11 +304,18 @@ export default function TouristSpotsPage() {
       </section>
 
       {/* Tours Section */}
-      <section className="py-12 bg-white" id="tours">
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" id="tours">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Guided Tours</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              🎯 Guided Tours 🎯
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Join our expertly curated tours and experience Nasirnagar like never before
+            </p>
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <TourCard
               name="Nasirnagar Heritage Tour"
               description="Explore the rich history and cultural heritage of Nasirnagar with knowledgeable local guides."
@@ -321,11 +404,18 @@ export default function TouristSpotsPage() {
       </section>
 
       {/* Travel Tips */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-16 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Travel Tips</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              💡 Travel Tips 💡
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Essential tips to make your journey to Nasirnagar unforgettable and hassle-free
+            </p>
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <TipCard
               icon={<Calendar className="h-10 w-10" />}
               title="Best Time to Visit"
@@ -366,14 +456,19 @@ export default function TouristSpotsPage() {
       </section>
 
       {/* Seasonal Events */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Seasonal Events & Festivals
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+              🎉 Seasonal Events & Festivals 🎉
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the vibrant culture and traditions of Nasirnagar through our seasonal celebrations
+            </p>
+          </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="space-y-8">
               <EventCard
                 name="Spring Festival"
                 description="Celebration of spring with cultural performances, flower exhibitions, and traditional games."
@@ -411,23 +506,29 @@ export default function TouristSpotsPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-12 bg-yellow-500">
+      <section className="py-16 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-black mb-6">
-            Plan Your Visit
-          </h2>
-          <p className="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
-            Need help planning your trip to Nasirnagar? Our tourism office is
-            ready to assist you with information, tour bookings, and travel
-            arrangements.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-black text-white hover:bg-gray-800"
-          >
-            <Link href="/contact">Contact Tourism Office</Link>
-          </Button>
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+              🚀 Plan Your Visit 🚀
+            </h2>
+            <p className="text-white/90 text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+              Need help planning your trip to Nasirnagar? Our tourism office is
+              ready to assist you with information, tour bookings, and travel
+              arrangements. Let's make your journey extraordinary! ✨
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-gray-900 hover:bg-gray-100 font-bold px-8 py-4 rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            >
+              <Link href="/contact" className="flex items-center gap-2">
+                <MapPin className="h-5 w-5" />
+                Contact Tourism Office
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
@@ -442,6 +543,7 @@ interface AttractionCardProps {
   bestTime: string;
   rating: number;
   image: string;
+  category: string;
 }
 
 function AttractionCard({
@@ -452,42 +554,84 @@ function AttractionCard({
   bestTime,
   rating,
   image,
+  category,
 }: AttractionCardProps) {
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'natural': return 'from-green-500 to-emerald-500';
+      case 'historical': return 'from-amber-500 to-orange-500';
+      case 'religious': return 'from-purple-500 to-indigo-500';
+      case 'cultural': return 'from-pink-500 to-rose-500';
+      default: return 'from-blue-500 to-cyan-500';
+    }
+  };
+
   return (
-    <Card className="h-full overflow-hidden">
-      <div className="relative h-48 w-full">
+    <Card className="h-full overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute top-2 right-2">
-          <Badge className="bg-yellow-500 text-black">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Rating Badge */}
+        <div className="absolute top-4 right-4 transform group-hover:scale-110 transition-transform duration-300">
+          <Badge className={`bg-gradient-to-r ${getCategoryColor(category)} text-white border-0 shadow-lg`}>
             <Star className="h-4 w-4 mr-1 fill-current" /> {rating}
           </Badge>
         </div>
-      </div>
-      <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="flex items-start">
-          <MapPin className="h-5 w-5 text-yellow-500 mr-2 mt-0.5 shrink-0" />
-          <span className="text-gray-700">{location}</span>
+
+        {/* Action buttons that appear on hover */}
+        <div className="absolute top-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <Button size="sm" variant="secondary" className="rounded-full w-10 h-10 p-0 bg-white/90 hover:bg-white">
+            <Heart className="h-4 w-4" />
+          </Button>
+          <Button size="sm" variant="secondary" className="rounded-full w-10 h-10 p-0 bg-white/90 hover:bg-white">
+            <Share2 className="h-4 w-4" />
+          </Button>
         </div>
-        <div className="flex items-start">
-          <Clock className="h-5 w-5 text-yellow-500 mr-2 mt-0.5 shrink-0" />
+
+        {/* View overlay */}
+        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <Button size="sm" className={`bg-gradient-to-r ${getCategoryColor(category)} text-white border-0 rounded-full`}>
+            <Eye className="h-4 w-4 mr-2" />
+            View Details
+          </Button>
+        </div>
+      </div>
+      
+      <CardHeader className="pb-3">
+        <CardTitle className="text-xl group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+          {name}
+        </CardTitle>
+        <CardDescription className="text-gray-600 leading-relaxed">
+          {description}
+        </CardDescription>
+      </CardHeader>
+      
+      <CardContent className="space-y-4">
+        <div className="flex items-start group/item hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors duration-200">
+          <MapPin className="h-5 w-5 text-blue-500 mr-3 mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
+          <span className="text-gray-700 font-medium">{location}</span>
+        </div>
+        <div className="flex items-start group/item hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors duration-200">
+          <Clock className="h-5 w-5 text-green-500 mr-3 mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
           <span className="text-gray-700">{timings}</span>
         </div>
-        <div className="flex items-start">
-          <Calendar className="h-5 w-5 text-yellow-500 mr-2 mt-0.5 shrink-0" />
+        <div className="flex items-start group/item hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors duration-200">
+          <Calendar className="h-5 w-5 text-orange-500 mr-3 mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
           <span className="text-gray-700">Best Time: {bestTime}</span>
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">View Details</Button>
+      
+      <CardFooter className="pt-0">
+        <Button className={`w-full bg-gradient-to-r ${getCategoryColor(category)} hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-white border-0 rounded-xl font-semibold`}>
+          Explore Now
+          <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -511,36 +655,78 @@ function TourCard({
   image,
 }: TourCardProps) {
   return (
-    <Card className="h-full overflow-hidden">
-      <div className="relative h-48 w-full">
+    <Card className="h-full overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-      </div>
-      <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="flex items-start">
-          <Clock className="h-5 w-5 text-yellow-500 mr-2 mt-0.5 shrink-0" />
-          <span className="text-gray-700">Duration: {duration}</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Popular badge */}
+        <div className="absolute top-4 right-4">
+          <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0 shadow-lg animate-pulse">
+            ⭐ Popular
+          </Badge>
         </div>
+
+        {/* Price overlay that appears on hover */}
+        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2">
+            <span className="font-bold text-gray-900">{price}</span>
+          </div>
+        </div>
+      </div>
+      
+      <CardHeader className="pb-3">
+        <CardTitle className="text-xl group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-300">
+          {name}
+        </CardTitle>
+        <CardDescription className="text-gray-600 leading-relaxed">
+          {description}
+        </CardDescription>
+      </CardHeader>
+      
+      <CardContent className="space-y-4">
+        <div className="flex items-start group/item hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-lg p-2 -m-2 transition-all duration-200">
+          <Clock className="h-5 w-5 text-indigo-500 mr-3 mt-0.5 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
+          <span className="text-gray-700 font-medium">Duration: {duration}</span>
+        </div>
+        
         <div>
-          <h4 className="font-medium text-sm text-gray-500 mb-1">Includes</h4>
-          <ul className="list-disc pl-5 text-gray-700 space-y-1">
+          <h4 className="font-semibold text-gray-700 mb-3 flex items-center">
+            <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mr-2"></span>
+            Tour Includes
+          </h4>
+          <ul className="space-y-2">
             {includes.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index} className="flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200">
+                <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-3 shrink-0"></div>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
-        <div className="font-semibold text-lg">Price: {price}</div>
+        
+        <div className="pt-2">
+          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4">
+            <div className="text-center">
+              <div className="text-sm text-gray-500 mb-1">Starting from</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                {price}
+              </div>
+            </div>
+          </div>
+        </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">Book Tour</Button>
+      
+      <CardFooter className="pt-0">
+        <Button className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-white border-0 rounded-xl font-semibold">
+          Book This Tour
+          <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+        </Button>
       </CardFooter>
     </Card>
   );
@@ -556,13 +742,20 @@ function TipCard({
   description: string;
 }) {
   return (
-    <Card className="h-full">
-      <CardContent className="p-6 flex flex-col items-center text-center">
-        <div className="p-3 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+    <Card className="h-full group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      <CardContent className="p-8 flex flex-col items-center text-center">
+        <div className="p-4 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 text-green-600 mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-xl font-semibold mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-green-600 group-hover:to-emerald-600 transition-all duration-300">
+          {title}
+        </h3>
+        <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+          {description}
+        </p>
+        
+        {/* Decorative element */}
+        <div className="mt-6 w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </CardContent>
     </Card>
   );
@@ -584,27 +777,51 @@ function EventCard({
   image,
 }: EventCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
       <div className="flex flex-col md:flex-row">
-        <div className="relative h-48 md:h-auto md:w-1/3">
+        <div className="relative h-56 md:h-auto md:w-2/5 overflow-hidden">
           <Image
             src={image || "/placeholder.svg"}
             alt={name}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          {/* Event type badge */}
+          <div className="absolute top-4 left-4">
+            <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 shadow-lg">
+              🎪 Festival
+            </Badge>
+          </div>
         </div>
-        <div className="p-6 md:w-2/3">
-          <h3 className="text-xl font-semibold mb-2">{name}</h3>
-          <p className="text-gray-600 mb-4">{description}</p>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <Calendar className="h-5 w-5 text-yellow-500 mr-2 shrink-0" />
-              <span className="text-gray-700">{time}</span>
+        
+        <div className="p-8 md:w-3/5 flex flex-col justify-between">
+          <div>
+            <h3 className="text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-orange-600 group-hover:to-red-600 transition-all duration-300">
+              {name}
+            </h3>
+            <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+              {description}
+            </p>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="flex items-center group/item hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-lg p-2 -m-2 transition-all duration-200">
+              <Calendar className="h-5 w-5 text-orange-500 mr-3 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
+              <span className="text-gray-700 font-medium">{time}</span>
             </div>
-            <div className="flex items-center">
-              <MapPin className="h-5 w-5 text-yellow-500 mr-2 shrink-0" />
-              <span className="text-gray-700">{location}</span>
+            <div className="flex items-center group/item hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 rounded-lg p-2 -m-2 transition-all duration-200">
+              <MapPin className="h-5 w-5 text-red-500 mr-3 shrink-0 group-hover/item:scale-110 transition-transform duration-200" />
+              <span className="text-gray-700 font-medium">{location}</span>
+            </div>
+            
+            {/* Learn more button */}
+            <div className="pt-2">
+              <Button variant="outline" className="group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-red-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                Learn More
+                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
             </div>
           </div>
         </div>
