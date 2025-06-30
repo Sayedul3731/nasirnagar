@@ -495,7 +495,7 @@ export default function HospitalsPage() {
                       <ul className="text-yellow-800 space-y-1">
                         <li>• Stay calm and provide clear information about the emergency</li>
                         <li>• Give exact location and nature of the medical emergency</li>
-                        <li>• Follow first aid instructions if you're trained</li>
+                        <li>• Follow first aid instructions if you&apos;re trained</li>
                         <li>• Keep emergency numbers saved in your phone</li>
                       </ul>
                     </div>

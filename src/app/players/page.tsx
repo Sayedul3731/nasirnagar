@@ -704,7 +704,7 @@ export default function PlayersPage() {
               Ready to Become a Player?
             </h2>
             <p className="text-xl mb-8 leading-relaxed opacity-90">
-              Join Nasirnagar's thriving sports community! Whether you're a beginner or experienced athlete, 
+              Join Nasirnagar&apos;s thriving sports community! Whether you&apos;re a beginner or experienced athlete, 
               we have programs and opportunities to help you reach your potential and represent our region with pride.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

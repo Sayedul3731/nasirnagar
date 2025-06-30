@@ -364,7 +364,7 @@ export default function TeamsPage() {
               Upcoming Tournaments & Events
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Don't miss out on the exciting sports events coming up in Nasirnagar
+              Don&apos;t miss out on the exciting sports events coming up in Nasirnagar
             </p>
           </div>
 

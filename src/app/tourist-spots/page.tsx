@@ -515,7 +515,7 @@ export default function TouristSpotsPage() {
             <p className="text-white/90 text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
               Need help planning your trip to Nasirnagar? Our tourism office is
               ready to assist you with information, tour bookings, and travel
-              arrangements. Let's make your journey extraordinary! ✨
+              arrangements. Let&apos;s make your journey extraordinary! ✨
             </p>
             <Button
               asChild
