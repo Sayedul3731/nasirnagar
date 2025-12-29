@@ -780,14 +780,14 @@ function DoctorCard({
         </div>
 
         <CardDescription className="text-center space-y-1 mt-2">
-          <div className="flex items-center justify-center gap-1 text-sm text-gray-600">
+          <span className="inline-flex items-center justify-center gap-1 text-sm text-gray-600">
             <GraduationCap className="h-4 w-4 text-blue-500" />
             {qualifications}
-          </div>
-          <div className="flex items-center justify-center gap-1 text-sm font-medium text-gray-700">
+          </span>
+          <span className="inline-flex items-center justify-center gap-1 text-sm font-medium text-gray-700">
             <Award className="h-4 w-4 text-green-500" />
             {experience} Years Experience
-          </div>
+          </span>
         </CardDescription>
       </CardHeader>
 
